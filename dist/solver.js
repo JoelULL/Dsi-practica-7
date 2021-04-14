@@ -6,18 +6,41 @@ exports.MergeSort = exports.BubbleSort = exports.Solver = void 0;
  * Mergesort y bubblesort
  */
 class Solver {
+    /**
+     * Constructor de la clase contexto que recibe como parametros:
+     * @param data array numerico a ordenar
+     * @param strategy la estrategia que en este caso es un algoritmo de ordenacion
+     */
     constructor(data, strategy) {
         this.data = data;
         this.strategy = strategy;
     }
+    /**
+     * Metodo que utiliza la clase contexto para cambiar de estrategia
+     * en este caso algoritmo de ordenacion
+     * @param strategy estrategia a cambiar (algoritmo)
+     */
     setStrategy(strategy) {
         this.strategy = strategy;
     }
+    /**
+     * Metodo en el que la clase contexto permite a un objeto de la
+     * interfaz Strategy realizar su algoritmo sobre data.
+     * Donde data es el array numerico que le pasa el usuario
+     */
     logic() {
         this.strategy.execute(this.data);
     }
 }
 exports.Solver = Solver;
+/**
+ * Primer algoritmo de ordenacion, BubbleSort.
+ * Este algoritmo revisa cada elemento de la lista con
+ * el que tiene a continuacion, si el que esta delante es mas
+ * pequeño los intercambia. En cada iteracion del algoritmo
+ * un elemento no sera evaluado porque no habran elementos a su derecha
+ * mas grandes al estar ya ordenados con respecto a este numero
+ */
 class BubbleSort {
     execute(data) {
         let array = data.slice();
@@ -32,9 +55,18 @@ class BubbleSort {
         }
         data = array;
         console.log(data);
+        return data;
     }
 }
 exports.BubbleSort = BubbleSort;
+/**
+ * Segundo algoritmo de ordenacion, MergeSort.
+ * Este algoritmo lo primero que hara es comprobar
+ * que si la longitud del array es menor o igual que 1
+ * Si esto es asi, significara que el array ya esta ordenado. El array
+ * a ordenar se divide en dos mitades y cada es ordenada. Cada mitad ordenada
+ * es combinada de forma ordenada obteniendo el array ordenado.
+ */
 class MergeSort {
     execute(data) {
         console.log(divide(data));

@@ -1,6 +1,7 @@
 {
     "entryPoints": [
-      "./src/mod.ts"
+      "./src/solver.ts",
+      "./src/client.ts"
     ],
     "out": "./dcs"
   }
